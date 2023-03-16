@@ -1,3 +1,4 @@
+/*======HERO====================================*/
 .hero {
     background-color: #173817;
     padding: rem(80) 0;
@@ -322,7 +323,7 @@
     }
 }
 
-/*===================================================*/
+/*======ABOUT=============================================*/
 .about {
     background-color: #FF97B3;
     padding: rem(47) 0 rem(46);
@@ -552,6 +553,7 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        flex-wrap: wrap;
         gap: rem(10);
     }
     .success input {
