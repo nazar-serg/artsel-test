@@ -1,0 +1,64 @@
+@use "sass:math";
+@import "mixins";
+// Primary colors
+$mainColor: #31363D;
+// Fonts
+$fontFamily: 'Arial';
+$fontSize: rem(18);
+// Minimum Page Width
+$minWidth: 320;
+// Canvas (layout) width
+$maxWidth: 1512;
+// Bounding container width (0 = no limit)
+$maxWidthContainer: 1352;
+// Container's overall padding
+// (30 = 15px left and right, 0 = no padding)
+$containerPadding: 30;
+// Width of the first breakpoint
+$containerWidth: $maxWidthContainer+$containerPadding;
+// break points
+$pc: em($containerWidth); // PCs, laptops, some tablets in landscape position
+$tablet: em(991.98); // Tablets, some phones in landscape position
+$mobile: em(767.98); // L phones
+$mobileSmall: em(479.98); // Phones S
+// Adaptive type:
+// 1 = responsive (container has no breakpoints),
+// 2 = by break points (container changes its width by break points)
+$responsiveType: 1;
+
+@if ($responsiveType==1) {
+    [class*="__container"] {
+        margin: 0 auto;
+        @if ($maxWidthContainer>0) {
+            max-width: rem($maxWidthContainer);
+            box-sizing: content-box;
+        }
+        @else {
+            @if ($containerPadding>0) {
+                padding: 0 rem(math.div($containerPadding, 2));
+            }
+        }
+        @media (max-width: $pc) {
+            max-width: rem(970);
+        }
+        @media (max-width: $tablet) {
+            max-width: rem(750);
+        }
+        @media (max-width: $mobile) {
+            max-width: none;
+            @if ($containerPadding>0 and $maxWidthContainer>0) {
+                padding: 0 rem(math.div($containerPadding, 2));
+            }
+        }
+    }
+}
+
+// Connecting styles of common project elements
+@import "global";
+
+// Connecting individual page styles
+@import "home";
+@import "reset";
+@import "libs";
+
+
