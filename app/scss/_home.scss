@@ -9,15 +9,11 @@
     &__list {
         background-color: #DBD978;
         border-radius: rem(30);
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: rem(20);
         padding: rem(7) rem(8);
         margin-bottom: rem(16);
-    }
-    &__item {
-        display: inline-block;
-        &:not(:last-child) {
-            margin-right: rem(20);
-        }
     }
 }
 
@@ -308,7 +304,7 @@
         }
     }
     &__name {
-        font-size: rem(24);
+        @include adaptiveValue("font-size", 24, 20);
         line-height: math.div(28, 24);
         font-weight: 700;
         text-align: center;
@@ -316,6 +312,7 @@
         margin: rem(16) 0 rem(8);
     }
     &__profession {
+        @include adaptiveValue("font-size", 18, 16);
         line-height: math.div(21, 18);
         font-weight: 400;
         color: #fff;
@@ -331,6 +328,9 @@
         display: flex;
         justify-content: space-between;
         gap: rem(118);
+        @media (max-width: $tablet) {
+            flex-direction: column;
+        }
     }
     &__image {
         flex: 0 1 50%;
@@ -345,7 +345,12 @@
 .image-about {
     position: relative;
     &__top {
-       
+        max-width: 100%;
+        height: auto;
+        position: absolute;
+        top: 24%;
+        left: 12%;
+        transform: translate(-12%, -24%);
     }
     &__bottom {
         max-width: 100%;
@@ -353,14 +358,7 @@
         object-fit: none;
     }
 }
-@keyframes spin {
-    0% {
-      transform: rotate(0);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+
 /*===================================================*/
 .text-about {
     background-color: #780D1A;
@@ -418,7 +416,7 @@
         }
     }
     &__title {
-        font-size: rem(82);
+        @include adaptiveValue("font-size", 82, 62);
         line-height: math.div(94, 82);
         font-weight: 400;
         color: #fff;
@@ -427,7 +425,7 @@
         margin-bottom: rem(62);
     }
     &__description {
-        font-size: rem(21);
+        @include adaptiveValue("font-size", 21, 18);
         line-height: math.div(32, 21);
         font-weight: 400;
         color: rgba(255, 255, 255, 0.8);
@@ -558,6 +556,7 @@
     }
     .success input {
         border: 2px solid #008751;
+        color: #008751;
     } 
     .error input {
         border: 2px solid red;
